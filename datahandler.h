@@ -24,7 +24,7 @@ private:
 
     void data_byte_handler(uint8_t data);
     void setMatrixSize(uint8_t widht, uint8_t height);
-    void setMatrixValue(int *mas, int count);
+    void setMatrixValue(uint32_t *mas, int count);
 };
 
 #endif // DATAHANDLER_H

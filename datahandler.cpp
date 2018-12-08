@@ -20,6 +20,7 @@ void DataHandler::initDataMas(uint8_t width, uint8_t height)
         free(data_mas);
     } else {
         data_mas = new uint32_t[width * height];
+        memset(data_mas, 0, width * height * sizeof(data_mas));
         this->width = width;
         this->height = height;
     }
@@ -60,9 +61,10 @@ void DataHandler::data_byte_handler(uint8_t data) {
             qDebug() << "out of massive range";
             return;
         }
-
-        data_mas[cur_elem / 3] |= (int)data << ((cur_elem % 3) * 8);
         uint32_t val = data_mas[cur_elem / 3];
+        val |= (uint32_t)data << ((cur_elem % 3) * 8);
+        data_mas[cur_elem / 3] = val;
+
         cur_elem++;
 
         if (cur_elem == max_size * 3) {
@@ -84,7 +86,7 @@ void DataHandler::setMatrixSize(uint8_t width, uint8_t height) {
     is_new = false;
 }
 
-void DataHandler::setMatrixValue(int *mas, int count) {
+void DataHandler::setMatrixValue(uint32_t *mas, int count) {
     drawer->setLedColor(mas, count);
 }
 

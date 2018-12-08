@@ -15,7 +15,7 @@ public:
     QLabel *fpsLabel;
 
     bool setSize(uint8_t width, uint8_t height);
-    void setLedColor(int *mas, int size);
+    void setLedColor(uint32_t *mas, int size);
     void show_fps();
     void setFpsLabel(QLabel *value);
 

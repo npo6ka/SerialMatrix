@@ -83,7 +83,7 @@ bool LedMatrixDrawer::setSize(uint8_t w, uint8_t h)
     return false;
 }
 
-void LedMatrixDrawer::setLedColor(int *mas, int size)
+void LedMatrixDrawer::setLedColor(uint32_t *mas, int size)
 {
     fps++;
     for(int i = 0; i < size && i < buttons.size(); ++i) {
